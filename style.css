@@ -1,0 +1,189 @@
+@font-face {
+    font-family: 'Athene Voyage';
+    src: url('fonts/AtheneVoyage.woff') format('woff');
+  }
+  
+  body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+  }
+  
+  header {
+    background-color: #c478d9;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  header h1 {
+    font-family: 'Athene Voyage', cursive;
+    font-size: 48px;
+    margin-bottom: 10px;
+  }
+  
+  .logo {
+    width: 120px;
+    height: auto;
+    margin-bottom: 20px;
+  }
+  
+  nav ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  nav ul li {
+    display: inline;
+    margin: 0 15px;
+  }
+  
+  nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    transition: color 0.3s;
+  }
+  
+  nav ul li a:hover {
+    color: #ffd4ff;
+  }
+  
+  section {
+    padding: 40px;
+    text-align: center;
+  }
+  
+  .banner {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 15px;
+    margin-top: 20px;
+  }
+  
+  footer {
+    background-color: #c478d9;
+    color: white;
+    text-align: center;
+    padding: 10px;
+  }
+  
+  .productos-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-top: 20px;
+  }
+  
+  .producto {
+    background-color: #fbf0ff;
+    border: 2px solid #dcc0ff;
+    border-radius: 15px;
+    padding: 20px;
+    width: 200px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+  }
+  
+  .producto:hover {
+    transform: scale(1.05);
+  }
+  
+  .producto img {
+    border-radius: 10px;
+  }
+  
+  .producto button {
+    background-color: #f869ff;
+    color: white;
+    border: none;
+    padding: 10px;
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+  }
+  
+  .producto button:hover {
+    background-color: #ad14ff;
+  }
+  
+  /* Formulario contacto */
+  .formulario-contacto {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+  
+  .formulario-contacto input,
+  .formulario-contacto textarea {
+    width: 90%;
+    max-width: 400px;
+    padding: 10px;
+    border: 2px solid #dcc0ff;
+    border-radius: 10px;
+  }
+  
+  .formulario-contacto button {
+    background-color: #c478d9;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .formulario-contacto button:hover {
+    background-color: #ad14ff;
+  }
+  
+  /* Redes sociales */
+  .redes-sociales {
+    margin-top: 20px;
+  }
+  
+  .redes-sociales a img {
+    width: 40px;
+    margin: 0 10px;
+    transition: transform 0.3s;
+  }
+  
+  .redes-sociales a img:hover {
+    transform: scale(1.2);
+  }
+  
+  /* Botón subir */
+  #btn-subir {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #c478d9;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 50%;
+    font-size: 24px;
+    cursor: pointer;
+    display: none;
+    z-index: 1000;
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    nav ul li {
+      display: block;
+      margin: 10px 0;
+    }
+    
+    .productos-container {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+  
+  

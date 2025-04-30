@@ -74,7 +74,7 @@ function renderBotonMercadoPago(preferenceId) {
   });
 }
 
-// ---- Botón subir arriba ----
+// ---- Botón de Whasap ----
 const btnSubir = document.getElementById('btn-subir');
 
 window.onscroll = function () {
@@ -86,6 +86,13 @@ window.onscroll = function () {
 };
 
 btnSubir.addEventListener('click', function () {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+});
+
+btnSubir.addEventListener('click', function() {
   window.scrollTo({
     top: 0,
     behavior: 'smooth'

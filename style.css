@@ -102,7 +102,7 @@
   }
   
   .producto button {
-    background-color: #f869ff;
+    background-color: #ad18b2d6;
     color: white;
     border: none;
     padding: 10px;
@@ -113,7 +113,7 @@
   }
   
   .producto button:hover {
-    background-color: #ad14ff;
+    background-color: #651391;
   }
   
   /* Formulario contacto */
@@ -181,6 +181,60 @@
     transform: scale(1.1);
   }
   
+  #testimonios {
+    background-color: #fff0fb;
+    padding: 40px 20px;
+    text-align: center;
+  }
+  
+  #testimonios h2 {
+    font-size: 28px;
+    color: #a84ebd;
+    margin-bottom: 30px;
+    font-family: 'Athene Voyage', cursive;
+  }
+  
+  .testimonios-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+  }
+  
+  .testimonio {
+    background-color: #ffffff;
+    border: 2px solid #f5ccff;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    padding: 20px;
+    width: 280px;
+    font-style: italic;
+    position: relative;
+  }
+  
+  .testimonio::before {
+    content: "❝";
+    font-size: 40px;
+    color: #d49fe1;
+    position: absolute;
+    top: -20px;
+    left: 10px;
+  }
+  
+  .testimonio h4 {
+    margin-top: 15px;
+    font-size: 14px;
+    color: #777;
+    font-style: normal;
+  }
+  
+  @media (max-width: 768px) {
+    .testimonios-container {
+      flex-direction: column;
+      align-items: center;
+    }
+  }  
+
   /* Responsive */
   @media (max-width: 768px) {
     nav ul li {

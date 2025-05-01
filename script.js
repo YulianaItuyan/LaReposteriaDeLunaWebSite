@@ -2,6 +2,16 @@
 let carrito = [];
 let total = 0;
 
+// Recuperar carrito desde localStorage al cargar la página
+window.addEventListener('load', () => {
+  const savedCarrito = localStorage.getItem('carrito');
+  if (savedCarrito) {
+    carrito = JSON.parse(savedCarrito);
+    total = carrito.reduce((sum, item) => sum + item.precio, 0);
+    actualizarCarrito();
+  }
+});
+
 function agregarAlCarrito(producto, precio) {
   carrito.push({ producto, precio });
   total += precio;
@@ -29,6 +39,9 @@ function actualizarCarrito() {
 
   totalElemento.textContent = `Total: $${total.toLocaleString()}`;
 
+  // Guardar carrito en localStorage
+  localStorage.setItem('carrito', JSON.stringify(carrito));
+
   // Simula creación de preferencia y renderiza botón de pago
   crearPreferenciaFicticia().then(preferenceId => {
     console.log("Preferencia simulada:", preferenceId);
@@ -38,7 +51,6 @@ function actualizarCarrito() {
 
 // ---- Mercado Pago Bricks (simulación de diseño) ----
 
-// Reemplaza con tu Public Key real
 const mp = new MercadoPago('TEST-3d91fdea-4cdc-41b4-97d9-15614eb7dc48', {
   locale: 'es-CO'
 });
@@ -74,7 +86,7 @@ function renderBotonMercadoPago(preferenceId) {
   });
 }
 
-// ---- Botón de Whasap ----
+// ---- Botón subir arriba ----
 const btnSubir = document.getElementById('btn-subir');
 
 window.onscroll = function () {
@@ -92,9 +104,4 @@ btnSubir.addEventListener('click', function () {
   });
 });
 
-btnSubir.addEventListener('click', function() {
-  window.scrollTo({
-    top: 0,
-    behavior: 'smooth'
-  });
-});
+

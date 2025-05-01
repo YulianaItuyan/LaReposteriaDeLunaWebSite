@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pastel de Chocolate | La Repostería de Luna</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .producto-detalle {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      padding: 40px;
+    }
+
+    .producto-info {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .producto-imagen {
+      flex: 1;
+      min-width: 280px;
+      text-align: center;
+    }
+
+    .producto-imagen img {
+      max-width: 100%;
+      border-radius: 15px;
+    }
+
+    .presentacion {
+      margin-top: 15px;
+    }
+
+    .presentacion label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .presentacion input {
+      margin-right: 10px;
+    }
+
+    button {
+      margin-top: 20px;
+      background-color: #ad18b2d6;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      .producto-detalle {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>La Repostería de Luna</h1>
+    <img src="imagenes/logo.png" alt="Logo La Repostería de Luna" class="logo" />
+    <nav>
+      <ul>
+        <li><a href="index.html#inicio">Inicio</a></li>
+        <li><a href="index.html#productos">Productos</a></li>
+        <li><a href="index.html#sobre-nosotros">Sobre Nosotros</a></li>
+        <li><a href="index.html#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="producto-detalle">
+    <div class="producto-info">
+      <h2>❤️​ Pastel de RedVelvet </h2>
+      <p>
+        Delicioso y tradicional pastel de RedVelvet, suavecito y esponjoso, con un toque de frosting de queso crema. ¡El sabor perfecto para cualquier ocasión!
+      </p>
+
+      <div class="presentacion">
+        <label>Presentación:</label>
+        <label><input type="radio" name="tamano" value="1/4L" checked> 1/4 de Libra - $30.000</label>
+        <label><input type="radio" name="tamano" value="1/2L"> 1/2 de Libra - $45.000</label>
+        <label><input type="radio" name="tamano" value="3/4L"> 3/4 de Libra - $60.000</label>
+        <label><input type="radio" name="tamano" value="1L"> 1 Libra - $70.000</label>
+      </div>
+
+      <button onclick="agregarPChoAlCarrito()">Añadir al carrito</button>
+    </div>
+
+    <div class="producto-imagen">
+      <img src="imagenes/chocolate.png" alt="Chocolate" />
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 La Repostería de Luna. Todos los derechos reservados.</p>
+  </footer>
+
+  <script>
+    function agregarPChoAlCarrito() {
+      const presentacion = document.querySelector('input[name="tamano"]:checked').value;
+
+      const nombre = `Pastel de Chocolate - ${presentacion}`;
+      const precio = (presentacion === "1/4L") ? 30000 :
+                     (presentacion === "1/2L") ? 45000 :
+                     (presentacion === "3/4L") ? 60000 : 70000;
+
+      const producto = { producto: nombre, precio: precio };
+      const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+      carrito.push(producto);
+
+      localStorage.setItem('carrito', JSON.stringify(carrito));
+      alert("¡Producto añadido al carrito!");
+      window.location.href = "index.html";
+    }
+  </script>
+
+</body>
+</html>

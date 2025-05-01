@@ -258,7 +258,39 @@
       color: #8d3dac;
     }
     
-  
+    .nosotros-mapa {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 20px;
+      align-items: flex-start;
+    }
+    
+    .texto-sobre-nosotros {
+      flex: 1;
+      min-width: 280px;
+      text-align: left;
+    }
+    
+    .mapa-sucursal {
+      flex: 1;
+      min-width: 280px;
+    }
+    
+    .mapa-sucursal iframe {
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      height: 100%;
+      min-height: 300px;
+    }
+    .titulo-mapa {
+      margin-bottom: 10px;
+      color: #a84ebd;
+      font-family: 'Athene Voyage', cursive;
+      font-size: 22px;
+      text-align: center;
+    }
+    
   }
   
   

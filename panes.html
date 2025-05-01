@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Caja de Cupcakes | La Repostería de Luna</title>
+  <title>Panes en Barra | La Repostería de Luna</title>
   <link rel="stylesheet" href="style.css" />
   <style>
     .producto-detalle {
@@ -30,42 +30,27 @@
       border-radius: 15px;
     }
 
-    .cantidad-control {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-top: 10px;
+    .presentacion {
+      margin-top: 15px;
     }
 
-    .cantidad-control button {
+    .presentacion label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .presentacion input {
+      margin-right: 10px;
+    }
+
+    button {
+      margin-top: 20px;
       background-color: #ad18b2d6;
       color: white;
       border: none;
-      padding: 5px 10px;
+      padding: 10px 15px;
       border-radius: 5px;
       cursor: pointer;
-    }
-
-    .cantidad-control span {
-      font-weight: bold;
-    }
-
-    .opciones-compra {
-      margin-top: 15px;
-    }
-
-    .opciones-compra label {
-      margin-right: 20px;
-      cursor: pointer;
-    }
-
-    .opciones-cajas, .opciones-unidades {
-      margin-top: 15px;
-      display: none;
-    }
-
-    .presentacion {
-      margin-top: 15px;
     }
 
     @media (max-width: 768px) {
@@ -93,67 +78,38 @@
 
   <section class="producto-detalle">
     <div class="producto-info">
-      <h2>​🧁​ Caja de Cupcakes</h2>
+      <h2>🥖 Pan en Barra</h2>
       <p>
-        Cupcakes deliciosos y esponjosos!
+        Nuestros panes en barra artesanales están hechos con ingredientes frescos y amor.  
+        Puedes elegir entre deliciosos sabores como chocolate, naranja, banano, zanahoria, manzana, mango, arándanos o maracumango, 
+        y escoger la presentación ideal para ti.
       </p>
 
-      <div class="opciones-compra">
-        <label>
-          <input type="radio" name="tipoCompra" value="caja" onclick="mostrarOpcion('caja')" checked />
-          Presentación en caja
-        </label>
-        <label>
-          <input type="radio" name="tipoCompra" value="unidad" onclick="mostrarOpcion('unidad')" />
-          Cupcakes individuales
-        </label>
-      </div>
-
-      <!-- Selección de sabor (común para ambas presentaciones) -->
       <div class="presentacion">
         <label for="sabor">Elige un sabor:</label>
         <select id="sabor">
           <option value="Chocolate">Chocolate</option>
-          <option value="Fresa">Fresa</option>
-          <option value="Vainilla">Vainilla</option>
+          <option value="Naranja">Naranja</option>
+          <option value="Banano">Banano</option>
           <option value="Zanahoria">Zanahoria</option>
-          <option value="Redvelvet">Redvelvet</option>
-          <option value="Aguacate">Aguacate</option>
+          <option value="Manzana">Manzana</option>
+          <option value="Mango">Mango</option>
           <option value="Arándanos">Arándanos</option>
-          <option value="Tiramisu">Tiramisu</option>
+          <option value="Maracumango">Maracumango</option>
         </select>
       </div>
 
-      <!-- Opciones de presentación en cajas -->
-      <div class="opciones-cajas" id="opciones-cajas">
-        <label for="presentacion">Selecciona una presentación:</label><br />
-        <select id="presentacion">
-          <option value="Caja de Cupcakes x6U" data-precio="29000">
-            Caja de Cupcakes x6U - $29.000
-          </option>
-          <option value="Caja de Cupcakes x12U" data-precio="56500">
-            Caja de Cupcakes x12U - $56.500
-          </option>
-        </select>
+      <div class="presentacion">
+        <label>Presentación:</label>
+        <label><input type="radio" name="tamano" value="250" checked> 250g - $15.000</label>
+        <label><input type="radio" name="tamano" value="500"> 500g - $25.000</label>
       </div>
 
-      <!-- Opciones de cupcakes por unidad -->
-      <div class="opciones-unidades" id="opciones-unidades">
-        <div class="cantidad-control">
-          <label>Unidades:</label>
-          <button onclick="cambiarCantidad(-1)">-</button>
-          <span id="cantidad">0</span>
-          <button onclick="cambiarCantidad(1)">+</button>
-        </div>
-      </div>
-
-      <br />
-      <button onclick="agregarCupCakesAlCarrito()">Añadir al carrito</button>
-
+      <button onclick="agregarPanAlCarrito()">Añadir al carrito</button>
     </div>
 
     <div class="producto-imagen">
-      <img src="imagenes/cupcake.png" alt="Cupcakes" />
+      <img src="imagenes/panenbarra.png" alt="Pan en Barra" />
     </div>
   </section>
 
@@ -162,52 +118,21 @@
   </footer>
 
   <script>
-    let cantidad = 0;
-
-    function cambiarCantidad(valor) {
-      cantidad += valor;
-      if (cantidad < 0) cantidad = 0;
-      document.getElementById('cantidad').textContent = cantidad;
-    }
-
-    function mostrarOpcion(tipo) {
-      const cajas = document.getElementById('opciones-cajas');
-      const unidades = document.getElementById('opciones-unidades');
-
-      if (tipo === 'caja') {
-        cajas.style.display = 'block';
-        unidades.style.display = 'none';
-      } else {
-        cajas.style.display = 'none';
-        unidades.style.display = 'block';
-      }
-    }
-
-    function agregarCupCakesAlCarrito() {
-      const tipo = document.querySelector('input[name="tipoCompra"]:checked').value;
+    function agregarPanAlCarrito() {
       const sabor = document.getElementById('sabor').value;
+      const presentacion = document.querySelector('input[name="tamano"]:checked').value;
+
+      const nombre = `Pan de ${sabor} - ${presentacion}g`;
+      const precio = presentacion === "250" ? 15000 : 25000;
+
+      const producto = { producto: nombre, precio: precio };
       const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
-
-      if (tipo === 'caja') {
-        const seleccion = document.getElementById('presentacion');
-        const nombre = `${seleccion.value} - Sabor: ${sabor}`;
-        const precio = parseInt(seleccion.selectedOptions[0].dataset.precio);
-        carrito.push({ producto: nombre, precio: precio });
-      } else if (tipo === 'unidad') {
-        if (cantidad === 0) {
-          alert("Debes agregar al menos una unidad.");
-          return;
-        }
-        const precio = 2500 * cantidad;
-        carrito.push({ producto: `Cupcakes individuales x${cantidad} - Sabor: ${sabor}`, precio: precio });
-      }
-
+      carrito.push(producto);
       localStorage.setItem('carrito', JSON.stringify(carrito));
+
       alert("¡Producto añadido al carrito!");
       window.location.href = "index.html";
     }
-
-    window.onload = () => mostrarOpcion('caja');
   </script>
 
 </body>
